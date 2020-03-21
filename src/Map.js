@@ -17,7 +17,6 @@ function Map(props) {
     .then(cases => {
       setCases(cases);
       });
-    console.log("this is the data", cases);
   }, []);
 
   const mapOnClick = (Region) => {
@@ -29,7 +28,6 @@ function Map(props) {
       defaultZoom={4}
       defaultCenter={{ lat: 39, lng: -98 }}
     >
-      
       {cases.map(cases => (
           <Marker
                 onClick ={() => mapOnClick(cases)}
@@ -38,11 +36,9 @@ function Map(props) {
                 lat: parseFloat(cases.lat),
                 lng: parseFloat(cases.long)
                 }}
-            
           />
         )
       )}
-
       { selectedRegion && (
         < InfoWindow
                 position={{
@@ -55,7 +51,6 @@ function Map(props) {
                 <h3 style={{'color': 'red'}}>{selectedRegion.provinceState}, {selectedRegion.countryRegion}</h3>
                 <h4 style={{'textSize':"16"}}>Confirmed: {selectedRegion.confirmed}</h4>
           </div>
-
           </InfoWindow>
       )}
     </GoogleMap>
